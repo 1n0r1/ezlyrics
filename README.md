@@ -17,4 +17,6 @@ Sing along.
 
 
 ## Demo
-![Demo](https://media.giphy.com/media/qRPL9wxwBRgh9uQLPU/giphy.gif)
+https://user-images.githubusercontent.com/80285371/123321728-8ed60e80-d55d-11eb-9428-f447dd00fc0b.mp4
+
+
