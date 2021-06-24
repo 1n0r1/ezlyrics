@@ -1,6 +1,9 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time 
 import questionary
 
@@ -43,8 +46,8 @@ if __name__ == "__main__":
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
-
     driver = webdriver.Chrome(ChromeDriverManager().install(),chrome_options=chrome_options)
+
     driver.get(searchURL)
     time.sleep(4)
     results = driver.find_elements_by_class_name("u-quarter_vertical_margins")
@@ -61,14 +64,22 @@ if __name__ == "__main__":
             songs.append(s)
         except:
             s = ""
+
+
     if (len(songs) == 0):
         print("No Result")
     else:
         lyrics_url = ask(songs)
-        driver.get(lyrics_url)
-        time.sleep(7)
-        lyrics = driver.find_element_by_xpath('/html/body/routable-page/ng-outlet/song-page/div/div/div[2]/div[1]/div/defer-compile[1]/lyrics/div/div/section/p').text
-        print(lyrics)
+        print(lyrics_url)
+
+        d = webdriver.Chrome(ChromeDriverManager().install(),chrome_options=chrome_options)
+        d.get(lyrics_url)
+        d.implicitly_wait(30)
+        lyrics = d.find_element_by_class_name("lyrics")
+        print(lyrics.text)
+        d.quit()
+
+    driver.quit()
 
     
 
