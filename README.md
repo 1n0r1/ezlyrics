@@ -14,3 +14,7 @@ Input your search.
 Select from search results.
 
 Sing along.
+
+
+## Demo
+![Demo](https://media.giphy.com/media/qRPL9wxwBRgh9uQLPU/giphy.gif)
