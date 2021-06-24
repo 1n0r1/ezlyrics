@@ -50,21 +50,23 @@ if __name__ == "__main__":
     results = driver.find_elements_by_class_name("u-quarter_vertical_margins")
     songs = []
     for r in results[1:]:
-        name = r.find_element_by_class_name("mini_card-title").text
-        artist = r.find_element_by_class_name("mini_card-subtitle").text
-        url = r.find_element_by_class_name("mini_card")
-        s = song()
-        s.title = name
-        s.subtitle = artist
-        s.url = url.get_attribute("href")
-        songs.append(s)
-
+        try:
+            name = r.find_element_by_class_name("mini_card-title").text
+            artist = r.find_element_by_class_name("mini_card-subtitle").text
+            url = r.find_element_by_class_name("mini_card")
+            s = song()
+            s.title = name
+            s.subtitle = artist
+            s.url = url.get_attribute("href")
+            songs.append(s)
+        except:
+            s = ""
     if (len(songs) == 0):
         print("No Result")
     else:
         lyrics_url = ask(songs)
         driver.get(lyrics_url)
-        time.sleep(4)
+        time.sleep(7)
         lyrics = driver.find_element_by_xpath('/html/body/routable-page/ng-outlet/song-page/div/div/div[2]/div[1]/div/defer-compile[1]/lyrics/div/div/section/p').text
         print(lyrics)
 

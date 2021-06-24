@@ -1,6 +1,6 @@
-bs4
-pytest
+\pytest
 pylint
 questionary
 selenium
 webdriver_manager
+chromedriver
