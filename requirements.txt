@@ -1,0 +1,6 @@
+bs4
+pytest
+pylint
+questionary
+selenium
+webdriver_manager
